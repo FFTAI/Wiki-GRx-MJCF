@@ -1,5 +1,7 @@
 # Wiki-GRx-MJCF
 
+<img src="./pictures/N1.png" width="300" height="360" />
+
 This repository provides a tool to transfer from URDF file to MJCF. It is developed for converting the Fourier GRx robot URDF files to MJCF files.
 However, it can also be used for other URDF files.
 
