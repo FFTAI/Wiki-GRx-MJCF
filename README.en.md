@@ -1,3 +1,5 @@
+[简体中文](README.md) | English
+
 # Wiki-GRx-MJCF
 
 <img src="./pictures/N1.png" width="300" height="360" />
