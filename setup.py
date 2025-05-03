@@ -15,5 +15,8 @@ setup(
     install_requires=[
         "mujoco>=3.0.0",
         "defusedxml==0.7.1",
+
+        # 文件格式整理
+        "lxml",
     ]
 )

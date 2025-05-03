@@ -2,7 +2,6 @@ import os
 
 from .core import Element
 from .core import (
-    resolve_ros_uris,
     resolve_uris,
     add_mujoco_node,
     pass_through_mujoco,
@@ -17,6 +16,8 @@ def full_pipeline(
         urdf: Element,
 
         mujoco_node: Element = None,
+
+        # 传感器配置
         sensor_config: Element = None,
 
         # 默认加入地面
@@ -30,7 +31,6 @@ def full_pipeline(
     """
 
     urdf_file_folder_abs_path = urdf_file_path.replace(os.path.basename(urdf_file_path), "")
-    print(f"URDF file folder path: {urdf_file_folder_abs_path}")
 
     resolve_uris(urdf, base_path=urdf_file_folder_abs_path)
 

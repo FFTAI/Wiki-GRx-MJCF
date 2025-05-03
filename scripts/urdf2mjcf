@@ -3,11 +3,28 @@ import os
 from sys import stdout
 from pathlib import Path
 
-# 从包中直接导入版本
 from urdf2mjcf import __version__
 from urdf2mjcf.cli import cli
 from urdf2mjcf.app import full_pipeline
-from urdf2mjcf.core import _parse_element as parse_stream, tostring
+from urdf2mjcf.core import parse_element as parse_stream, tostring
+
+from lxml import etree
+
+
+def xml_format(input_file, output_file):
+    """
+    Format the XML file using lxml
+    """
+    parser = etree.XMLParser(remove_blank_text=True)
+    tree = etree.parse(input_file, parser)
+
+    with open(output_file, 'wb') as f:
+        tree.write(
+            f,
+            pretty_print=True,
+            xml_declaration=True,
+            encoding='UTF-8',
+        )
 
 
 def app(args):
@@ -17,9 +34,13 @@ def app(args):
 
     # Check if the URDF file exists
     urdf_abs_path = os.path.abspath(args.urdf.name)
+    mjcf_abs_path = os.path.abspath(args.mjcf.name)
+
     if not os.path.exists(urdf_abs_path):
         raise FileNotFoundError(f"URDF file not found: {urdf_abs_path}")
-    print(f"Converting URDF file: {urdf_abs_path}")
+
+    print(f"Input URDF file: {urdf_abs_path}")
+    print(f"Output MJCF file: {mjcf_abs_path}")
 
     # Convert the URDF file to MJCF format
     result = full_pipeline(
@@ -47,22 +68,21 @@ def app(args):
     if args.mjcf != stdout:
         stdout.write(args.mjcf.name)
 
+    # Format the MJCF file
+    if args.default_format:
+        xml_format(args.mjcf.name, args.mjcf.name)
+
 
 if __name__ == "__main__":
+    # Get default arguments from environment variables
     parser = cli()
 
     parser.add_argument(
-        "--version", action="version", version=__version__)
-    parser.add_argument(
-        "-l", dest="license", action="store_true", help="print license information"
+        "--version",
+        action="version",
+        version=__version__
     )
 
     args = parser.parse_args()
-
-    if args.license:
-        license_path = Path(__file__).resolve().parents[1] / "LICENSE"
-        with open(license_path, "r") as license_file:
-            print(license_file.read())
-        exit(0)
 
     app(args)

@@ -13,7 +13,23 @@ from defusedxml.ElementTree import parse
 from mujoco import MjModel, mj_saveLastXML
 
 
-def _parse_element(source: Union[str, Path, IO[AnyStr], None], **kwargs) -> Element:
+def resolve_uris(urdf: Element, base_path: str = None) -> None:
+    """
+    Resolve all collision mesh URIs to absolute paths
+    """
+
+    for mesh_node in urdf.findall(".//collision/*/mesh[@filename]"):
+        uri = mesh_node.get("filename", None)
+        assert (
+                uri is not None
+        ), f"Mesh node without filename: '{mesh_node.tag}' : {mesh_node.attrib}"
+
+        absolute_path = base_path + uri if base_path is not None else uri
+
+        mesh_node.set("filename", str(absolute_path))
+
+
+def parse_element(source: Union[str, Path, IO[AnyStr], None], **kwargs) -> Element:
     """
     Parse source into a Python XML element object, safely
     """
@@ -32,7 +48,7 @@ def pass_through_mujoco(model_xml: Element) -> Element:
     mj_saveLastXML(tmp_file_name, parsed_model)
 
     with fdopen(tmp_file_descriptor, "r") as tmp_file:
-        backloaded_model_xml = _parse_element(tmp_file)
+        backloaded_model_xml = parse_element(tmp_file)
 
     unlink(tmp_file_name)
 
@@ -91,22 +107,6 @@ def add_mujoco_node(urdf: Element, mujoco_node: Element = None) -> None:
     flag_node = SubElement(option_node, "flag", flag_attrib)
 
     size_node = SubElement(new_mujoco_node, "size", size_attrib)
-
-
-def resolve_uris(urdf: Element, base_path: str = None) -> None:
-    """
-    Resolve all collision mesh URIs to absolute paths
-    """
-
-    for mesh_node in urdf.findall(".//collision/*/mesh[@filename]"):
-        uri = mesh_node.get("filename", None)
-        assert (
-                uri is not None
-        ), f"Mesh node without filename: '{mesh_node.tag}' : {mesh_node.attrib}"
-
-        absolute_path = base_path + uri if base_path is not None else uri
-
-        mesh_node.set("filename", str(absolute_path))
 
 
 def populate_sensors(mjcf: Element, sensor_config: Element) -> None:

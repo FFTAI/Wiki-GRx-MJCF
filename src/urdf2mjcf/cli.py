@@ -16,13 +16,13 @@ def cli(parser: ArgumentParser = None):
     parser = (
         ArgumentParser(
             prog="urdf2mjcf",
-            description="""Copyright (c) 2022 Fraunhofer IPA; use option '-l' to print license.
-
-Parse a URDF model into MJCF format""",
+            description="""
+            Copyright (c) 2022 Fraunhofer IPA; use option '-l' to print license.
+            Parse a URDF model into MJCF format
+            """,
             formatter_class=ArgFormatter,
         )
-        if parser is None
-        else parser
+        if parser is None else parser
     )
 
     parser.add_argument(
@@ -39,15 +39,16 @@ Parse a URDF model into MJCF format""",
         default=stdout,
         help="the converted MJCF file",
     )
+
     parser.add_argument(
-        "-s",
+        "--sensor_config",
         dest="sensor_config",
         type=FileType("r"),
         default=None,
         help="the XML file of the sensor configuration",
     )
     parser.add_argument(
-        "-m",
+        "--mujoco_node",
         dest="mujoco_node",
         type=FileType("r"),
         default=None,
@@ -56,13 +57,20 @@ Parse a URDF model into MJCF format""",
     parser.add_argument(
         "--ground",
         dest="default_ground",
-        action="store_true",
+        action="store_false",
         help="whether to add the default ground plane to the MuJoCo model",
     )
     parser.add_argument(
         "--lighting",
         dest="default_lighting",
-        action="store_true",
+        action="store_false",
         help="whether to add the default lighting to the MuJoCo model",
     )
+    parser.add_argument(
+        "--format",
+        dest="default_format",
+        action="store_false",
+        help="format the MJCF file"
+    )
+
     return parser
