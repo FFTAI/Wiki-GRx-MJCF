@@ -1,5 +1,5 @@
 <mujoco model="N1 scene">
-    <include file="N1.xml"/>
+    <include file="N1_raw_refine.xml"/>
 
     <statistic center="0 0 1" extent="1.8"/>
 
@@ -22,13 +22,11 @@
 
     <keyframe>
         <key name="home"
-             qpos="
-    0 0 0 0 0 0 0
-    0 0 0 0 0 0
-    0 0 0 0 0 0
-    0 0 0
-    0 0 0
-    0 0 0 0 0 0 0
-    0 0 0 0 0 0 0"/>
+             qpos="0 0 0 0 0 0
+                   0 0 0 0 0 0
+                   0
+                   0 0 0 0 0
+                   0 0 0 0 0"
+        />
     </keyframe>
 </mujoco>

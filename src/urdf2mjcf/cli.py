@@ -57,13 +57,13 @@ def cli(parser: ArgumentParser = None):
     parser.add_argument(
         "--ground",
         dest="default_ground",
-        action="store_false",
+        action="store_true",
         help="whether to add the default ground plane to the MuJoCo model",
     )
     parser.add_argument(
         "--lighting",
         dest="default_lighting",
-        action="store_false",
+        action="store_true",
         help="whether to add the default lighting to the MuJoCo model",
     )
     parser.add_argument(
