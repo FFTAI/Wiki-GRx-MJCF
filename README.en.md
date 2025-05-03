@@ -53,7 +53,7 @@ However, it can also be used for other URDF files.
 
    ```
    # 编辑 MJCF 文件中的 <body name="base">
-   <body name="base" pos="0 0 0.68">
+   <body name="base" pos="0 0 0.70">
    ```
 
 5. Refine the MJCF file:
