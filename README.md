@@ -37,7 +37,7 @@
      -l                print license information (default: False)
    ```
 
-3. 转换 URDF 文件为 MJCF 格式：
+3. 转换 URDF 文件为 MJCF 格式
 
    ```shell
    urdf2mjcf /path/to/models /path/to/mjcf
@@ -48,7 +48,7 @@
    urdf2mjcf ./models/N1/urdf/N1_raw.urdf ./models/N1/mjcf/N1_raw.xml
    ```
 
-4. 调整机器人基座高度：
+4. 调整机器人基座高度
 
    ```
    # 编辑 MJCF 文件中的 <body name="base">
