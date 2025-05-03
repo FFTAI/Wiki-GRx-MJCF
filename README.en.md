@@ -72,8 +72,6 @@ However, it can also be used for other URDF files.
 
 2. Drag the generated MJCF file into the Mujoco Viewer window to check if the model is correct.
 
----
-
 ## Thanks
 
 - https://github.com/balandbal/urdf2mjcf

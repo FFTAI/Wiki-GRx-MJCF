@@ -71,8 +71,6 @@
 
 2. 把生成的 MJCF 文件拖到 Mujoco Viewer 窗口中，查看模型是否正确。
 
----
-
 ## 感谢
 
 - https://github.com/balandbal/urdf2mjcf
