@@ -22,7 +22,8 @@
 
     <keyframe>
         <key name="home"
-             qpos="0 0 0 0 0 0
+             qpos="0 0 0 0 0 0 0
+                   0 0 0 0 0 0
                    0 0 0 0 0 0
                    0
                    0 0 0 0 0

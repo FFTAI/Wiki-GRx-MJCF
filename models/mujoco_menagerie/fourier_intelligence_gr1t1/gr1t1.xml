@@ -61,6 +61,9 @@
             <freejoint/>
 
             <geom class="visual" rgba="0.752941 0.752941 0.752941 1" mesh="base"/>
+
+
+
             <body name="link_left_thigh_roll" pos="-0.047999 0.105 -0.057493">
                 <inertial pos="0.04163 3.4568e-05 -0.0021382" quat="0.575529 0.581908 -0.40597 0.406619" mass="1.1437" diaginertia="0.00117548 0.00100413 0.000943892"/>
                 <joint name="joint_left_hip_roll" pos="0 0 0" axis="1 0 0" range="-0.09 0.79"/>
