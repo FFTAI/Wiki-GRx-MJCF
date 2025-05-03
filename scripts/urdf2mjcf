@@ -1,9 +1,9 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 import os
-
 from sys import stdout
 from pathlib import Path
 
+# 从包中直接导入版本
 from urdf2mjcf import __version__
 from urdf2mjcf.cli import cli
 from urdf2mjcf.app import full_pipeline
@@ -11,12 +11,17 @@ from urdf2mjcf.core import _parse_element as parse_stream, tostring
 
 
 def app(args):
+    """
+    App for URDF-2-MJCF conversion
+    """
+
+    # Check if the URDF file exists
     urdf_abs_path = os.path.abspath(args.urdf.name)
     if not os.path.exists(urdf_abs_path):
         raise FileNotFoundError(f"URDF file not found: {urdf_abs_path}")
     print(f"Converting URDF file: {urdf_abs_path}")
 
-    """App for URDF-2-MJCF conversion"""
+    # Convert the URDF file to MJCF format
     result = full_pipeline(
         urdf_file_path=urdf_abs_path,
         urdf=parse_stream(args.urdf),
@@ -26,8 +31,10 @@ def app(args):
         default_lighting=args.default_lighting,
     )
 
+    # Write the MJCF result to the specified output file
     args.mjcf.write(tostring(result, encoding="unicode"))
 
+    # Close the input and output files
     args.urdf.close()
     args.mjcf.close()
 
@@ -44,7 +51,8 @@ def app(args):
 if __name__ == "__main__":
     parser = cli()
 
-    parser.add_argument("--version", action="version", version=__version__)
+    parser.add_argument(
+        "--version", action="version", version=__version__)
     parser.add_argument(
         "-l", dest="license", action="store_true", help="print license information"
     )

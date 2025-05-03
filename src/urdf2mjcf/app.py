@@ -1,6 +1,6 @@
 import os
 
-from .core import Element, RosPack
+from .core import Element
 from .core import (
     resolve_ros_uris,
     resolve_uris,
@@ -15,21 +15,29 @@ from .default_elements.lighting import add_lighting
 def full_pipeline(
         urdf_file_path: str,
         urdf: Element,
-        rospack: RosPack = None,
-        sensor_config: Element = None,
+
         mujoco_node: Element = None,
-        default_ground: bool = False,
-        default_lighting: bool = False,
+        sensor_config: Element = None,
+
+        # 默认加入地面
+        default_ground: bool = True,
+
+        # 默认加入光源
+        default_lighting: bool = True,
 ) -> Element:
-    """Convert URDF object to MJCF"""
+    """
+    Convert URDF object to MJCF
+    """
+
     urdf_file_folder_abs_path = urdf_file_path.replace(os.path.basename(urdf_file_path), "")
     print(f"URDF file folder path: {urdf_file_folder_abs_path}")
 
-    # resolve_ros_uris(models, rospack)
     resolve_uris(urdf, base_path=urdf_file_folder_abs_path)
 
+    # 把所有相对路径的文件名转换为绝对路径
     add_mujoco_node(urdf, mujoco_node)
 
+    # URDF -> MUJOCO -> MJCF
     mjcf = pass_through_mujoco(urdf)
 
     if sensor_config is not None:
@@ -38,6 +46,7 @@ def full_pipeline(
 
     if default_ground:
         add_ground(mjcf)
+
     if default_lighting:
         add_lighting(mjcf)
 
