@@ -1,8 +1,6 @@
 # Wiki-GRx-MJCF
 
-欢迎访问傅利叶智能 Wiki-MJCF 知识库！
-
-本知识库提供将URDF文件转换为MJCF格式的工具。该工具专为GRx系列机器人URDF文件转换而开发，同时也适用于其他URDF文件的转换。
+本代码仓库提供将 URDF 文件转换为 MJCF 格式的工具。该工具专为 Fourier GRx 系列机器人 URDF 文件转换而开发，同时也适用于其他 URDF 文件的转换。
 
 ## 安装指南
 
