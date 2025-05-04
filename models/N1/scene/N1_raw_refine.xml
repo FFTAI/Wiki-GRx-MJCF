@@ -88,7 +88,7 @@
     </asset>
 
     <worldbody>
-        <light pos="0 0 1000" castshadow="true"/>
+        <light mode="targetbodycom" target="base_link" pos="1.40 0 1.40"/>
 
         <body name="base_link" pos="0 0 0.70">
             <!-- Add freejoint will add additional 7 dofs -->
