@@ -136,11 +136,5 @@
                 </body>
             </body>
         </body>
-        <geom name="ground_plane" type="plane" size="5 5 10" material="MatPlane" rgba="1 1 1 1"/>
-        <light pos="0 0 1000" castshadow="true"/>
     </worldbody>
-    <asset>
-        <texture name="texplane" builtin="checker" height="512" width="512" rgb1=".2 .3 .4" rgb2=".1 .15 .2" type="2d"/>
-        <material name="MatPlane" reflectance="0.5" shininess="0.01" specular="0.1" texrepeat="1 1" texture="texplane" texuniform="true"/>
-    </asset>
 </mujoco>
