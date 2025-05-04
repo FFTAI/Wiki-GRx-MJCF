@@ -7,17 +7,17 @@
             <!-- visual -->
             <!-- contype="0" 和 conaffinity="0" 表示该几何体不会与任何物体碰撞（包括地面） -->
             <default class="visual">
-                <geom group="1" type="mesh" contype="0" conaffinity="0" rgba="1 1 1 1"/>
+                <geom group="2" type="mesh" contype="0" conaffinity="0" rgba="1 1 1 1"/>
             </default>
 
             <default class="collision">
-                <geom group="2" mass="0" density="0" rgba="1 1 1 1"/>
+                <geom group="3" mass="0" density="0" rgba="1 1 1 1"/>
             </default>
 
             <!-- attach -->
             <!-- site 不参与碰撞和计算 body 的质量和惯性，用于安装传感器 -->
             <default class="attach">
-                <site group="3" type="sphere" size="0.005" rgba="1 1 1 1"/>
+                <site group="4" type="sphere" size="0.005" rgba="1 1 1 1"/>
             </default>
 
             <!-- joint -->
