@@ -7,11 +7,11 @@
             <!-- visual -->
             <!-- contype="0" 和 conaffinity="0" 表示该几何体不会与任何物体碰撞（包括地面） -->
             <default class="visual">
-                <geom group="2" type="mesh" contype="0" conaffinity="0" rgba="1 1 1 1"/>
+                <geom group="2" type="mesh" contype="0" conaffinity="0" rgba="0.3 0.3 0.3 1"/>
             </default>
 
             <default class="collision">
-                <geom group="3" mass="0" density="0" rgba="1 1 1 1"/>
+                <geom group="3" mass="0" density="0" rgba="0.7 0.7 0.7 1"/>
             </default>
 
             <!-- attach -->
