@@ -7,11 +7,13 @@ setup(
     description="Convert URDF to MJCF",
     author="Jason Chen",
     author_email="xin.chen@fftai.com",
-    license="GPL-3.0",
+    license="Apache-2.0",
     packages=find_packages(),
     package_dir={"": "src"},
     python_requires='>=3.7',
-    scripts=["scripts/urdf2mjcf"],
+    scripts=[
+        "scripts/urdf2mjcf"
+    ],
     install_requires=[
         "mujoco>=3.0.0",
         "defusedxml==0.7.1",
