@@ -2,7 +2,7 @@
 
 # Wiki-GRx-MJCF
 
-<img src="./pictures/N1.png" width="300" />
+<img src="./pictures/GR2.png" width="300" />
 
 本代码仓库提供将 URDF 文件转换为 MJCF 格式的工具。该工具专为 Fourier GRx 系列机器人 URDF 文件转换而开发，同时也适用于其他 URDF 文件的转换。
 
@@ -44,12 +44,12 @@
 3. 转换 URDF 文件为 MJCF 格式
 
    ```shell
-   urdf2mjcf /path/to/models /path/to/mjcf
+   urdf2mjcf /path/to/urdf /path/to/mjcf
    ```
 
    ```shell
-   # 转换 N1 机器人示例
-   urdf2mjcf ./models/N1/urdf/N1_raw.urdf ./models/N1/mjcf/N1_raw.xml
+   # 转换 GR2 机器人示例
+   urdf2mjcf ./models/GR2/urdf/GR2_raw.urdf ./models/GR2/mjcf/GR2_raw.xml
    ```
 
 4. 调整机器人基座高度
@@ -61,7 +61,7 @@
 
 5. 优化 MJCF 文件：
     - 工具生成的 MJCF 文件为基础版本，您可以根据需求手动优化。
-    - 优化完的 MJCF 文件放置于 `./models/N1/scene/` 目录下。
+    - 优化完的 MJCF 文件放置于 `./models/GR2/scene/` 目录下。
 
 ## 模型验证
 
@@ -79,5 +79,5 @@
 
 ---
 
-感谢您对傅利叶智能 N1 机器人项目的关注！
+感谢您对傅利叶智能 GR2 机器人项目的关注！
 希望本资源能为您的机器人开发提供有力支持！
